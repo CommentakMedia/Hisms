@@ -1,6 +1,7 @@
 <?php
 namespace Shreifelagamy\Hisms;
 
+use Exception;
 use GuzzleHttp\Client;
 
 class HismsClient
@@ -29,14 +30,14 @@ class HismsClient
      * @param  Array|String $to Number wit key
      * @return Guzzle/Client
      */
-    public function sendSMS(string $message, string $to)
+    public function sendSMS(string $message, $to)
     {
         $this->username   = $this->configs["Username"];
         $this->password   = $this->configs["Password"];
         $this->senderName = $this->configs["SenderName"];
 
         if (is_null($message) or !isset($message) or is_null($to) or !isset($to)) {
-            throw new \Exception('MESSAGE And TO Number are Require');
+            throw new Exception('MESSAGE And TO Number are Require');
         }
 
         // handle to variable

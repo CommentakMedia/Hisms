@@ -30,8 +30,7 @@ class HiSmsServiceProvider extends ServiceProvider
     {
         $this->app->singleton('hisms', function ($app) {
             $config = $app['config']['hisms'] ?: $app['config']['hisms::config'];
-            $client = new HismsClient($config['Username'], $config['Password'], $config['SenderName']);
-            return $client;
+            return new HismsClient($config['Username'], $config['Password'], $config['SenderName']);
         });
     }
 
