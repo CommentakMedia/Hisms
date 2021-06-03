@@ -29,8 +29,7 @@ class HiSmsServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('hisms', function ($app) {
-            $config = $app['config']['jawalbsms'] ?: $app['config']['jawalbsms::config'];
-            \Log::info("HISMS", $config);
+            $config = $app['config']['hisms'] ?: $app['config']['hisms::config'];
             $client = new HismsClient($config['Username'], $config['Password'], $config['SenderName']);
             return $client;
         });
