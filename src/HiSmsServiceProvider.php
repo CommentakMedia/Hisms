@@ -30,6 +30,7 @@ class HiSmsServiceProvider extends ServiceProvider
     {
         $this->app->singleton('hisms', function ($app) {
             $config = $app['config']['jawalbsms'] ?: $app['config']['jawalbsms::config'];
+            \Log::info($config);
             $client = new HismsClient($config['Username'], $config['Password'], $config['SenderName']);
             return $client;
         });
